@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @ToString
@@ -31,4 +32,8 @@ public class User {
     private String twitter;
     private String linkedin;
     private String imgURL;
+
+    //used to connect to FriendsList.
+//    @OneToMany(mappedBy = "userID")
+//    private List<FriendsList> friendsList;
 }

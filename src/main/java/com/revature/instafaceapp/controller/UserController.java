@@ -25,6 +25,7 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/user")
     public User getUserByLogin(@RequestBody User user) {
+        System.out.println(user);
         return service.getUserByLogin(user);
     }
 
