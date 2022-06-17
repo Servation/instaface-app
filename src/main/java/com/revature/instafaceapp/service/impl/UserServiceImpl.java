@@ -33,13 +33,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User addUser(User user) {
-        return repository.save(user);
+    public void addUser(User user) {
+        repository.save(user);
     }
 
     @Override
-    public void updateUser(User user) {
-        User userDb = repository.findById(user.getId()).get();
+    public void updateUser(User user, int id) {
+        User userDb = repository.findById(id).get();
         userDb.setFirstName(user.getFirstName());
         userDb.setLastName(user.getLastName());
         userDb.setEmail(user.getEmail());
@@ -52,6 +52,7 @@ public class UserServiceImpl implements UserService {
         userDb.setTwitter(user.getTwitter());
         userDb.setLinkedin(user.getLinkedin());
        // userDb.setProfileImg(user.getProfileImg());
+        repository.save(userDb);
     }
 
     @Override

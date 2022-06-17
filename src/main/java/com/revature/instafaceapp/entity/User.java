@@ -30,5 +30,5 @@ public class User {
     private String facebook;
     private String twitter;
     private String linkedin;
-   // private Image profileImg;
+    private String imgURL;
 }
