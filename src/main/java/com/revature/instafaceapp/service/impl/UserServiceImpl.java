@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         userDb.setEmail(user.getEmail());
         userDb.setDescription(user.getDescription());
         userDb.setOccupation(user.getOccupation());
-        userDb.setCity(user.getOccupation());
+        userDb.setCity(user.getCity());
         userDb.setNationality(user.getNationality());
         userDb.setHobbies(user.getHobbies());
         userDb.setFacebook(user.getFacebook());

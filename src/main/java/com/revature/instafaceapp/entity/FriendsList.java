@@ -20,7 +20,6 @@ public class FriendsList {
     private int id;
     private int userIdRequester;
     private int userIdDecider;
-    private String discissionStatus;
 
     //used to conntect to users ID
 //    @ManyToMany

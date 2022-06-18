@@ -14,13 +14,13 @@ public class FriendsListController {
     @Autowired
     private FriendsListService service;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     @GetMapping("/friendlist")
     public List<FriendsList> friendsLists() {
         return service.getAllFriends();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     @PostMapping("/add")
     public String addFriend(@RequestBody FriendsList newFriend){
         service.addNewFriend(newFriend);

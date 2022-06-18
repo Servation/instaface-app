@@ -1,14 +1,12 @@
 package com.revature.instafaceapp.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Builder
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor

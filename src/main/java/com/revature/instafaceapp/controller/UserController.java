@@ -14,13 +14,13 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     @GetMapping
     public List<User> getAllUsers() {
         return service.getAllUsers();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     @PostMapping
     boolean registerUser(@RequestBody User user) {
         if (service.getUserByEmail(user)) {
@@ -30,16 +30,22 @@ public class UserController {
         return false;
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     @PostMapping("/user")
     public User getUserByLogin(@RequestBody User user) {
         return service.getUserByLogin(user);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @PutMapping("/{id}")
-    public User updateUser(@RequestBody User user, @PathVariable("id") int id){
-        service.updateUser(user, id);
-        return user;
+    @CrossOrigin
+    @PutMapping("/update")
+    public User updateUser(@RequestBody User user) {
+        service.updateUser(user, user.getId());
+        return  service.getUserById(user.getId());
+    }
+
+    @CrossOrigin
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable int id){
+        return service.getUserById(id);
     }
 }

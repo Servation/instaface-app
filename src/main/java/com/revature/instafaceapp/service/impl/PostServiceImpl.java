@@ -26,7 +26,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getAllPublicPost() {
-        return repository.findAll();
+        return repository.findByPrivacy(false);
     }
 
     @Override

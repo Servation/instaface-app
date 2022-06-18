@@ -32,7 +32,6 @@ public class FriendsListServiceImpl implements FriendsListService {
     @Override
     public void updateFriend(FriendsList friendslist, int id) {
         FriendsList fListDb = repo.findById(id).get();
-        fListDb.setDiscissionStatus(friendslist.getDiscissionStatus());
         repo.save(fListDb);
     }
 }
