@@ -27,4 +27,8 @@ public class FriendsListController {
         return "Friend request sent.";
     }
 
+//    @CrossOrigin
+//    @PostMapping("/update")
+//    public String updateFriend();
+
 }

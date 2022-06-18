@@ -18,9 +18,13 @@ public class User {
             strategy = GenerationType.AUTO
     )
     private int id;
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
+    @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
     private String description;
     private String occupation;

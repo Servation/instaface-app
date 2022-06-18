@@ -22,11 +22,13 @@ public class UserController {
 
     @CrossOrigin
     @PostMapping
-    boolean registerUser(@RequestBody User user) {
+    public boolean registerUser(@RequestBody User user) {
         if (service.getUserByEmail(user)) {
             service.addUser(user);
+            System.out.println(true);
             return true;
         }
+        System.out.println(false);
         return false;
     }
 

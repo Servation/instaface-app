@@ -1,16 +1,16 @@
 package com.revature.instafaceapp.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
+@Builder
 @ToString
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
+@Data
 @Entity
 public class FriendsList {
     @Id
@@ -18,11 +18,16 @@ public class FriendsList {
             strategy = GenerationType.AUTO
     )
     private int id;
-    private int userIdRequester;
-    private int userIdDecider;
-
-    //used to conntect to users ID
-//    @ManyToMany
-//    private User userID;
-
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    private User requester;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    private User decider;
+    @Column(unique = true)
+    private String status;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
 }
