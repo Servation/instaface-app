@@ -23,8 +23,15 @@ public class UserController {
     @CrossOrigin
     @PostMapping
     boolean registerUser(@RequestBody User user) {
-        if (service.getUserByEmail(user)) {
-            service.addUser(user);
+        if (service.getUserByEmail(user) && !user.getEmail().isEmpty()) {
+            User user1 = User.builder()
+                    .email(user.getEmail())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .password(user.getPassword())
+                    .imgURL("https://i1.lensdump.com/i/t7Evea.png?open=true")
+                    .build();
+            service.addUser(user1);
             return true;
         }
         return false;

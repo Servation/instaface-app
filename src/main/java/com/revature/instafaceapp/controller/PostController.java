@@ -29,8 +29,11 @@ public class PostController {
     }
 
     @CrossOrigin
-    @PostMapping()
-    public void addPost(@RequestBody Post post){
+    @PostMapping
+    public boolean addPost(@RequestBody Post post){
+        if (post.getMessage().isEmpty() && post.getImgURL().isEmpty())
+            return false;
         service.addPost(post);
+        return true;
     }
 }
