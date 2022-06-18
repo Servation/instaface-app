@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
         userDb.setFacebook(user.getFacebook());
         userDb.setTwitter(user.getTwitter());
         userDb.setLinkedin(user.getLinkedin());
-       // userDb.setProfileImg(user.getProfileImg());
+        userDb.setImgURL(user.getImgURL());
         repository.save(userDb);
     }
 

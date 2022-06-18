@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Date;
 
 @NoArgsConstructor
 @ToString
@@ -32,8 +33,8 @@ public class User {
     private String twitter;
     private String linkedin;
     private String imgURL;
-
-    //used to connect to FriendsList.
-//    @OneToMany(mappedBy = "userID")
-//    private List<FriendsList> friendsList;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
 }
