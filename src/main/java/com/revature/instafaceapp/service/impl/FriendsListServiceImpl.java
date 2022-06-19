@@ -1,6 +1,7 @@
 package com.revature.instafaceapp.service.impl;
 
 import com.revature.instafaceapp.entity.FriendsList;
+import com.revature.instafaceapp.entity.User;
 import com.revature.instafaceapp.repository.FriendsListRepository;
 import com.revature.instafaceapp.service.FriendsListService;
 import org.hibernate.NonUniqueResultException;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,8 +19,13 @@ public class FriendsListServiceImpl implements FriendsListService {
     private FriendsListRepository repo;
 
     @Override
-    public List<FriendsList> getAllFriends() {
-        return repo.findAll();
+    public List<FriendsList> getAllFriends(User user) {
+        return repo.getAllFriends(user.getId()).stream().toList();
+    }
+
+    @Override
+    public List<FriendsList> getAllPendingFriends(User user) {
+        return repo.getPendingFriendsList(user.getId()).stream().toList();
     }
 
     @Override
