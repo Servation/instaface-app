@@ -14,8 +14,14 @@ import java.util.Date;
 @Entity
 public class Post {
     @Id
+    @SequenceGenerator(
+            name = "post_sequence",
+            sequenceName = "post_sequence",
+            allocationSize = 1
+    )
     @GeneratedValue(
-            strategy = GenerationType.AUTO
+            strategy = GenerationType.SEQUENCE,
+            generator = "post_sequence"
     )
     private int id;
     private int userId;

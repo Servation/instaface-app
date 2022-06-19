@@ -32,7 +32,7 @@ public class FriendsListController {
     }
 
     @CrossOrigin
-    @PostMapping("/getrecord")
+    @PutMapping("/getrecord")
     public FriendsList getFriendRecordByUserIds(@RequestBody FriendsList friendRecord) {
         return service.getRecordByUserIds(friendRecord.getRequester(), friendRecord.getDecider());
     }

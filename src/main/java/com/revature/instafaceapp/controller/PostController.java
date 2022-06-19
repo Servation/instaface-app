@@ -18,8 +18,14 @@ public class PostController {
 
     @CrossOrigin
     @GetMapping
-    public List<Post> getAllPost() {
+    public List<Post> getAllPublicPost() {
         return service.getAllPublicPost();
+    }
+
+    @CrossOrigin
+    @GetMapping("/friends")
+    public List<Post> getFriendPost(){
+        return service.getAllPost();
     }
 
     @CrossOrigin
