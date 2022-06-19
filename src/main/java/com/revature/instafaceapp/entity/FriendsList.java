@@ -14,17 +14,18 @@ import java.util.Date;
 @Entity
 public class FriendsList {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.AUTO
+    @SequenceGenerator(
+            name = "friends_sequence",
+            sequenceName = "friends_sequence",
+            allocationSize = 1
     )
-    private int id;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private User requester;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private User decider;
-    @Column(unique = true)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "friends_sequence"
+    )
+    private int friendsId;
+    private int requester;
+    private int decider;
     private String status;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

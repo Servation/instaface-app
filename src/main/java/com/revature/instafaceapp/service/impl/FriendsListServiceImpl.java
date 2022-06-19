@@ -3,9 +3,11 @@ package com.revature.instafaceapp.service.impl;
 import com.revature.instafaceapp.entity.FriendsList;
 import com.revature.instafaceapp.repository.FriendsListRepository;
 import com.revature.instafaceapp.service.FriendsListService;
+import org.hibernate.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 @Service
@@ -30,8 +32,26 @@ public class FriendsListServiceImpl implements FriendsListService {
     }
 
     @Override
-    public void updateFriend(FriendsList friendslist, int id) {
-        FriendsList fListDb = repo.findById(id).get();
+    public void updateFriend(FriendsList updateFriend) {
+        System.out.println("inside update");
+        System.out.println(updateFriend);
+        FriendsList fListDb = repo.findById(updateFriend.getFriendsId()).get();
+        System.out.println(fListDb);
+        fListDb.setStatus(updateFriend.getStatus());
         repo.save(fListDb);
     }
+
+    @Override
+    public FriendsList getRecordByUserIds(int userId1, int userId2) {
+
+        FriendsList friendRecord = repo.getFriendRecord(userId1, userId2);
+        System.out.println(friendRecord);
+        if (friendRecord == null) {
+            friendRecord = repo.getFriendRecord(userId2, userId1);
+            System.out.println(friendRecord);
+        }
+        return friendRecord;
+    }
+
+
 }

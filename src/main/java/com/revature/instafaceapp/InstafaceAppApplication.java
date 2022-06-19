@@ -9,5 +9,4 @@ public class InstafaceAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(InstafaceAppApplication.class, args);
 	}
-
 }

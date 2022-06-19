@@ -21,14 +21,35 @@ public class FriendsListController {
     }
 
     @CrossOrigin
-    @PostMapping("/add")
-    public String addFriend(@RequestBody FriendsList newFriend){
-        service.addNewFriend(newFriend);
-        return "Friend request sent.";
+    @GetMapping("/getrecord")
+    public FriendsList getFriendRecordByUserIds(@RequestBody FriendsList friendRecord) {
+        return service.getRecordByUserIds(friendRecord.getRequester(), friendRecord.getDecider());
     }
 
-//    @CrossOrigin
-//    @PostMapping("/update")
-//    public String updateFriend();
+
+    @CrossOrigin
+    @PostMapping("/add")
+    public boolean addFriend(@RequestBody FriendsList newFriend){
+        if (newFriend != null) {
+            System.out.println(newFriend);
+            service.addNewFriend(newFriend);
+            System.out.println("Friend request sent");
+            return true;
+        }else {
+            System.out.println("Something went wrong, please try again.");
+            return false;
+        }
+    }
+
+    @CrossOrigin
+    @PutMapping("/update")
+    public String updateFriend(@RequestBody FriendsList updateFriend){
+        if (!updateFriend.getStatus().isEmpty()) {
+            service.updateFriend(updateFriend);
+            return "friend updated";
+        } else {
+            return "could not update";
+        }
+    }
 
 }
