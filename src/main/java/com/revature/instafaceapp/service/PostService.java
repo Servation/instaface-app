@@ -11,4 +11,5 @@ public interface PostService {
     List<Post> getPostByUserId(int id);
     List<Post> getAllPublicPost();
     void addPost(Post post);
+    List<Post> getAllPost();
 }

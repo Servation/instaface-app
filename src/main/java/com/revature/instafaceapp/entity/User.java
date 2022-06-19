@@ -14,8 +14,14 @@ import java.util.Date;
 @Entity
 public class User {
     @Id
+    @SequenceGenerator(
+            name = "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
     @GeneratedValue(
-            strategy = GenerationType.AUTO
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
     )
     private int id;
     @Column(nullable = false)

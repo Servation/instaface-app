@@ -21,7 +21,7 @@ public class FriendsListController {
     }
 
     @CrossOrigin
-    @GetMapping("/getrecord")
+    @PutMapping("/getrecord")
     public FriendsList getFriendRecordByUserIds(@RequestBody FriendsList friendRecord) {
         return service.getRecordByUserIds(friendRecord.getRequester(), friendRecord.getDecider());
     }
