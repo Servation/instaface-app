@@ -25,10 +25,7 @@ public class FriendsListController {
     @CrossOrigin
     @PostMapping("/searchfriendlist")
     public List<FriendsList> pendingList(@RequestBody User user) {
-        System.out.println(user);
-        List<FriendsList> test = service.getAllPendingFriends(user);
-        System.out.println(test);
-        return test;
+        return service.getAllPendingFriends(user);
     }
 
     @CrossOrigin
@@ -36,7 +33,6 @@ public class FriendsListController {
     public FriendsList getFriendRecordByUserIds(@RequestBody FriendsList friendRecord) {
         return service.getRecordByUserIds(friendRecord.getRequester(), friendRecord.getDecider());
     }
-
 
     @CrossOrigin
     @PostMapping("/add")

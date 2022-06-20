@@ -3,6 +3,7 @@ package com.revature.instafaceapp.service.impl;
 import com.revature.instafaceapp.entity.FriendsList;
 import com.revature.instafaceapp.entity.User;
 import com.revature.instafaceapp.repository.FriendsListRepository;
+import com.revature.instafaceapp.repository.UserRepository;
 import com.revature.instafaceapp.service.FriendsListService;
 import org.hibernate.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,13 +53,10 @@ public class FriendsListServiceImpl implements FriendsListService {
     public FriendsList getRecordByUserIds(int userId1, int userId2) {
 
         FriendsList friendRecord = repo.getFriendRecord(userId1, userId2);
-        System.out.println(friendRecord);
         if (friendRecord == null) {
             friendRecord = repo.getFriendRecord(userId2, userId1);
-            System.out.println(friendRecord);
         }
         return friendRecord;
     }
-
 
 }
