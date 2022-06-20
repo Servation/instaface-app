@@ -11,7 +11,7 @@ public interface FriendsListService {
 
     List<FriendsList> getAllFriends(User user);
 
-    List<FriendsList> getAllPendingFriends(User user);
+    List<FriendsList> getAllFriends(FriendsList friendsList);
 
     void addNewFriend(FriendsList newFriend);
     FriendsList findFriend(int userID);

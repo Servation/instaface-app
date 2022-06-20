@@ -25,8 +25,8 @@ public class FriendsListServiceImpl implements FriendsListService {
     }
 
     @Override
-    public List<FriendsList> getAllPendingFriends(User user) {
-        return repo.getPendingFriendsList(user.getId()).stream().toList();
+    public List<FriendsList> getAllFriends(FriendsList friendsList) {
+        return repo.getFriendsList(friendsList.getRequester(), friendsList.getStatus()).stream().toList();
     }
 
     @Override

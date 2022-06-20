@@ -22,8 +22,8 @@ public interface FriendsListRepository extends JpaRepository<FriendsList, Intege
     List<FriendsList> getAllFriends(int userId);
 
     @Query(
-            value = "select * from friends_list f where (f.requester = ?1 OR f.decider = ?1) AND f.status = 'Pending'",
+            value = "select * from friends_list f where (f.requester = ?1 OR f.decider = ?1) AND f.status = ?2",
             nativeQuery = true
     )
-    List<FriendsList> getPendingFriendsList(int userId);
+    List<FriendsList> getFriendsList(int userId, String status);
 }
